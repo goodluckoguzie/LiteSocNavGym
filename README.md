@@ -1,4 +1,3 @@
-
 ```markdown
 # LiteSocNavGym
 
@@ -41,22 +40,29 @@ git clone https://github.com/goodluckoguzie/LiteSocNavGym.git
 cd LiteSocNavGym
 ```
 
-### Create a Virtual Environment (Optional but Recommended)
+### Install the Environment
+
+Simply place the `socnav_env.py` file in the directory or path where it can be accessed by your scripts. No installation is necessary, but ensure that the environment is in the same directory or properly referenced in your project.
+
+```bash
+# Ensure the file is placed in the same directory
+# or the correct path where it is being imported.
+```
+
+### Optional: Create a Virtual Environment
 
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-### Install the Package
+### Install Dependencies
 
-It's recommended to install in editable mode for easy development.
+It's recommended to install dependencies listed in `requirements.txt` to ensure that the environment works as expected.
 
 ```bash
-pip install -e .
+pip install -r requirements.txt
 ```
-
-This command installs the package and its dependencies listed in `requirements.txt`.
 
 ## Usage
 
@@ -64,7 +70,7 @@ This command installs the package and its dependencies listed in `requirements.t
 
 An example script is provided to demonstrate how to interact with the environment for 5 episodes.
 
-1. Navigate to the examples directory:
+1. Navigate to the `examples/` directory:
 
    ```bash
    cd examples
@@ -77,6 +83,47 @@ An example script is provided to demonstrate how to interact with the environmen
    ```
 
 This script initializes the environment, runs 5 episodes, takes random actions, and renders the environment until each episode terminates.
+
+#### Example Script: `example_run.py`
+
+```python
+from LiteSocNavGym.socnav_env import LiteSocNavGym
+
+def run_multiple_episodes(num_episodes=5):
+    try:
+        # Initialize environment directly
+        env = LiteSocNavGym(render_mode='rgb_array')  # Use 'rgb_array' for visualization
+    except Exception as e:
+        print(f"Failed to initialize the environment: {e}")
+        return
+
+    try:
+        for episode in range(num_episodes):
+            obs, info = env.reset()
+            done = False
+            truncated = False
+            step = 0
+            total_reward = 0
+            print(f"\n--- Episode {episode + 1} ---")
+            
+            while not done and not truncated:
+                action = env.action_space.sample()  # Random action
+                obs, reward, done, truncated, info = env.step(action)
+                total_reward += reward
+                step += 1
+                env.render()
+            
+            print(f"Episode {episode + 1} finished after {step} steps with total reward {total_reward:.2f}")
+    except Exception as e:
+        print(f"An error occurred during the simulation: {e}")
+    finally:
+        env.close()
+
+# Run the example for 5 episodes
+run_multiple_episodes(5)
+```
+
+This script simulates a robot navigating toward a goal while avoiding humans and tables in each of the episodes.
 
 ---
 
@@ -187,7 +234,7 @@ If `config.yaml` is not present, the environment uses default parameters.
 
 A test script ensures the environment initializes and runs without errors. The script is located in the `tests/` directory.
 
-#### Example `tests/test_env.py`:
+#### Example `tests/test_socnav_env.py`:
 
 ```python
 import unittest
@@ -264,4 +311,3 @@ For questions or feedback, please reach out to:
 **Goodluck Oguzie**  
 [GitHub Profile](https://github.com/goodluckoguzie)  
 ```
-
