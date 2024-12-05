@@ -129,6 +129,9 @@ This script simulates a robot navigating toward a goal while avoiding humans and
 
 ## Environment Details
 
+The environment setup for the LiteSocNavGym looks like this:
+
+![Environment Image](assets/images/env_image.png)
 ### Observation Space
 
 - **Robot's Orientation:**
