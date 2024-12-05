@@ -129,9 +129,18 @@ This script simulates a robot navigating toward a goal while avoiding humans and
 
 ## Environment Details
 
-The environment setup for the LiteSocNavGym looks like this:
+### Environment Visualization
+
+Below is an image of the environment with the following components:
+
+- **Blue Circle:** Represents the goal of the humans.
+- **Red Objects:** Represent humans in the environment.
+- **Blue Object:** Represents the agent (robot).
+- **Green Circle:** Represents the robot's goal.
+- **Broad Rectangular Surface:** Represents the table.
 
 ![Environment Image](assets/images/env_image.png)
+
 ### Observation Space
 
 - **Robot's Orientation:**
@@ -306,6 +315,8 @@ Contributions are welcome! Please follow these steps:
 This project is licensed under the [MIT License](LICENSE).
 
 ---
+
+
 
 ## Contact
 
