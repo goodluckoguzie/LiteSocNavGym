@@ -1,22 +1,3 @@
-Sure, to streamline the process of copying the README content directly into the `README.md` file using the terminal, follow these steps:
-
-1. Open your terminal.
-2. Navigate to your project directory where you want to update the `README.md`.
-3. Use the following commands to open the `README.md` file in a text editor directly from your terminal:
-
-   If you are using **nano** (a commonly available terminal-based text editor):
-
-   ```bash
-   nano README.md
-   ```
-
-   If you prefer using **vim**:
-
-   ```bash
-   vim README.md
-   ```
-
-Once you have the text editor open, you can then paste the entire markdown content into it. Here is the markdown content you should copy:
 
 ```markdown
 # LiteSocNavGym
@@ -284,8 +265,3 @@ For questions or feedback, please reach out to:
 [GitHub Profile](https://github.com/goodluckoguzie)  
 ```
 
-4. Once you've pasted the markdown, save and close the file:
-   - For **nano**, press `Ctrl+X` to close, then `Y` to confirm changes, and `Enter` to save.
-   - For **vim**, type `:wq` and press `Enter` to save and exit.
-
-This procedure lets you directly edit the `README.md` in your project's root directory, updating it with all necessary sections.
